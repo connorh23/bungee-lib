@@ -1,0 +1,14 @@
+{
+  "name": "bungee-http",
+  "version": "1.0.0",
+  "description": "Http utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "connor.hood234@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
