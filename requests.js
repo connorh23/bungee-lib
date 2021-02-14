@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const {
    execute_with_retry
-} = require('./core.js');
+} = require('./lib/asnyc_executor.js');
 
 const get = async({ url, query_params, request_headers }) => {
    return execute_with_retry(async () => {
