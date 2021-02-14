@@ -7,55 +7,75 @@ const HTTP_CODES = {
    SERVER_ERROR: 500
 };
 
-const success = ({ status=HTTP_CODES.OK, body={}, headers={}, compress_output=false }) => {
-   if (compress_output) {
-      headers = {
-         ...headers,
-         'Accept-Encoding': 'gzip',
-         'x-accept-encoding': 'gzip'
-      };
-   }
-   return {
-      statusCode: status,
-      headers: headers,
-      body: JSON.stringify(body, null, 3)
-   }
+const success = ({
+  request,
+  statusCode=HTTP_CODES.OK,
+  headers={},
+  body={},
+  compress_output=false
+}) => {
+   return format_http_response({
+      request,
+      statusCode,
+      headers,
+      body,
+      compress_output
+   })
 };
 
-const error = ({ status_code=HTTP_CODES.SERVER_ERROR, errors=[], headers={}, compress_output=false }) => {
-   if (compress_output) {
-      headers = {
+const error = ({
+  request,
+  statusCode=HTTP_CODES.SERVER_ERROR,
+  headers={},
+  errors=[],
+  compress_output=false
+}) => {
+   return format_http_response({
+      request,
+      statusCode,
+      headers,
+      errors,
+      compress_output
+   })
+};
+
+/* ============================================================================================================== */
+/* ============================================================================================================== */
+
+const format_http_response = ({
+   request,
+   statusCode=HTTP_CODES.OK,
+   headers={},
+   body,
+   errors,
+   compress_output=false
+}) => {
+
+   headers = compress_output ?
+      {
          ...headers,
          'Accept-Encoding': 'gzip',
          'x-accept-encoding': 'gzip'
-      };
-   }
+      }
+      : headers;
+
    return {
-      statusCode: status_code,
-      headers: headers,
-      body: JSON.stringify({ errors: errors }, null, 3)
+      ... request && { request },
+      statusCode,
+      headers,
+      ...body && {
+         body: JSON.stringify(body, null, 3)
+      },
+      ...errors && {
+         body: JSON.stringify({ errors: errors }, null, 3)
+      }
    }
-};
+
+}
 
 module.exports = {
    success,
    error
 };
-//    static load_query_param_from_event = (event, param, defaultValue) => {
-//       if (event.queryStringParameters && event.queryStringParameters[param]) {
-//          return this.#parse_parameter_types(event.queryStringParameters[param]);
-//       }
-//       if (defaultValue !== undefined) return defaultValue;
-//       return undefined;
-//    };
-//
-//    static load_path_param_from_event = (event, param, defaultValue) => {
-//       if (event.pathParameters && event.pathParameters[param]) {
-//          return this.#parse_parameter_types(event.pathParameters[param]);
-//       }
-//       if (defaultValue) {
-//          return defaultValue;
-//       }
-//       return undefined;
-//    };
+
 
