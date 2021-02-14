@@ -1,6 +1,6 @@
 {
   "name": "bungee-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bungee utilities lib",
   "main": "index.js",
   "scripts": {
