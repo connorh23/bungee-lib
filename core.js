@@ -16,4 +16,4 @@ const execute_with_retry = async (method, num_retries=3) => {
 
 module.exports = {
    execute_with_retry
-}
+};
