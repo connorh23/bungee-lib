@@ -1,5 +1,5 @@
-const requests = require('./requests');
-const responses = require('./responses');
+const requests = require('./http/requests');
+const responses = require('./http/responses');
 
 module.exports = {
    requests,
