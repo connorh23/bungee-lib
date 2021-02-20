@@ -1,7 +1,9 @@
 const requests = require('./http/requests');
 const responses = require('./http/responses');
+const environment = require('./environment');
 
 module.exports = {
+   environment,
    requests,
    responses
 };
