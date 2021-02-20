@@ -1,7 +1,7 @@
 {
   "name": "bungee-lib",
-  "version": "1.1.0",
-  "description": "Bungee utilities lib",
+  "version": "1.2.0",
+  "description": "Bungee utilities library.  1.2.0 - Updated module structure.",
   "main": "index.js",
   "scripts": {
     "test": "npm run test"
