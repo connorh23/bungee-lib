@@ -2,16 +2,17 @@
   "name": "bungee-lib",
   "version": "1.2.0",
   "description": "Bungee utilities library.  1.2.0 - Updated module structure.",
-  "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest --passWithNoTests"
   },
   "author": "connor.hood234@gmail.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/connorh23/bungee-lib.git"
