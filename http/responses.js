@@ -8,14 +8,12 @@ const HTTP_CODES = {
 };
 
 const success = ({
-  request,
   statusCode=HTTP_CODES.OK,
   headers={},
   body={},
   compress_output=false
 }) => {
    return format_http_response({
-      request,
       statusCode,
       headers,
       body,
@@ -24,14 +22,12 @@ const success = ({
 };
 
 const error = ({
-  request,
   statusCode=HTTP_CODES.SERVER_ERROR,
   headers={},
   errors=[],
   compress_output=false
 }) => {
    return format_http_response({
-      request,
       statusCode,
       headers,
       errors,
@@ -43,7 +39,6 @@ const error = ({
 /* ============================================================================================================== */
 
 const format_http_response = ({
-   request,
    statusCode=HTTP_CODES.OK,
    headers={},
    body,
@@ -60,7 +55,6 @@ const format_http_response = ({
       : headers;
 
    return {
-      ... request && { request },
       statusCode,
       headers,
       ...body && {
