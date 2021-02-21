@@ -64,8 +64,7 @@ const format_http_response = ({
          body: JSON.stringify({ errors: errors }, null, 3)
       }
    }
-
-}
+};
 
 module.exports = {
    success,
