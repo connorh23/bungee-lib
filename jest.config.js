@@ -15,12 +15,7 @@ module.exports = {
       "/node_modules/",
       "./jest.config.js",
       ".eslintrc.js",
-
-      // Unit test not necessary
-      "/tbdb/api.js",
-      "scripts/sequelize"
-
-
+      
    ],
    coverageThreshold: {
       global: {
