@@ -1,5 +1,5 @@
 
-const execute = async ({ method, num_retries=0 }) => {
+const execute = async ({ method, max_attempts = 0 }) => {
 
    let num_failed_attempts = 0;
 
@@ -24,7 +24,7 @@ const execute = async ({ method, num_retries=0 }) => {
          error = err;
          errors.push(err.message);
       }
-   } while (num_failed_attempts <= num_retries);
+   } while (num_failed_attempts < max_attempts);
    throw error;
 };
 

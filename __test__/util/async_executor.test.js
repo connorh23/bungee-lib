@@ -16,7 +16,6 @@ test("async_executor.execute returns the response of successful method invocatio
    const response = await async_executor.execute({
       method: test_method,
       collect_telemetry: true,
-      num_retries: 3
    });
 
    expect(response.response).toEqual(TEST_RETURN_VALUE);
@@ -28,14 +27,14 @@ test("async_executor.execute returns the response of successful method invocatio
 test("async_executor.execute retries failed method for specified number of retries", async () => {
 
    const test_method = jest.fn(async () => { throw new Error("error")});
-   const num_retries = 5;
+   const max_attempts = 5;
 
    let error_thrown = false;
    let response;
    try {
       await async_executor.execute({
          method: test_method,
-         num_retries
+         max_attempts
       });
    } catch (err) {
       error_thrown = true;
@@ -43,7 +42,7 @@ test("async_executor.execute retries failed method for specified number of retri
 
    expect(error_thrown).toEqual(true);
    expect(response).toBeUndefined();
-   expect(test_method).toHaveBeenCalledTimes(num_retries);
+   expect(test_method).toHaveBeenCalledTimes(max_attempts);
 });
 
 test("async_executor.execute defaults to 0 reties", async () => {
