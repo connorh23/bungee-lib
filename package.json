@@ -1,6 +1,6 @@
 {
   "name": "bungee-lib",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Bungee utilities library.  2.0.0 ~ async_executor overhaul",
   "scripts": {
     "test": "jest --silent"

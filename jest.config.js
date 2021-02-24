@@ -15,7 +15,7 @@ module.exports = {
       "/node_modules/",
       "./jest.config.js",
       ".eslintrc.js",
-      
+
    ],
    coverageThreshold: {
       global: {

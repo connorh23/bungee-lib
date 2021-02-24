@@ -12,7 +12,7 @@ const execute = async ({ method, max_attempts = 0 }) => {
          const response =  await method();
          tracker.end();
          return {
-            response,
+            data: response,
             ... (error_log) && { errors: error_log },
             telemetry: tracker.report(),
          }
