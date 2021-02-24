@@ -2,8 +2,10 @@
 const execute = async ({ method, num_retries=0 }) => {
 
    let num_failed_attempts = 0;
+
    let error;
    const errors = [];
+
    const tracker =  LatencyTracker.start();
 
    do {
@@ -20,10 +22,9 @@ const execute = async ({ method, num_retries=0 }) => {
          num_failed_attempts += 1;
          tracker.lap({ message: `failed execution attempt (${num_failed_attempts})`});
          error = err;
-         errors.push(error.message);
-         console.log("Error, retrying");
+         errors.push(err.message);
       }
-   } while (num_failed_attempts < num_retries);
+   } while (num_failed_attempts <= num_retries);
    throw error;
 };
 
