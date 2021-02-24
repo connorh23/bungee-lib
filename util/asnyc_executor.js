@@ -4,8 +4,7 @@ const execute = async ({ method, max_attempts = 0 }) => {
    let num_failed_attempts = 0;
 
    let error;
-   const errors = [];
-
+   let error_log;
    const tracker =  LatencyTracker.start();
 
    do {
@@ -14,15 +13,15 @@ const execute = async ({ method, max_attempts = 0 }) => {
          tracker.end();
          return {
             response,
-            errors,
+            ... (error_log) && { errors: error_log },
             telemetry: tracker.report(),
-            failed_attempts: errors.length
          }
       } catch (err) {
          num_failed_attempts += 1;
          tracker.lap({ message: `failed execution attempt (${num_failed_attempts})`});
          error = err;
-         errors.push(err.message);
+         if (!error_log) error_log = [];
+         error_log.push(err.message);
       }
    } while (num_failed_attempts < max_attempts);
    throw error;
