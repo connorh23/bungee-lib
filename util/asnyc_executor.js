@@ -1,5 +1,5 @@
 
-const execute = async ({ method, num_retries=1 }) => {
+const execute = async ({ method, num_retries=0 }) => {
 
    let num_failed_attempts = 0;
    let error;
