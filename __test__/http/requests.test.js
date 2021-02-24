@@ -21,7 +21,7 @@ test('requests.get calls axios.get correctly', async () => {
       headers: TEST_HEADERS
    });
 
-   expect(response).toEqual(MOCK_RETURN_VALUE);
+   expect(response.response).toEqual(MOCK_RETURN_VALUE);
 });
 
 test('requests.post calls axios.post correctly', async () => {
@@ -38,7 +38,7 @@ test('requests.post calls axios.post correctly', async () => {
       headers: TEST_HEADERS
    });
 
-   expect(response).toEqual(MOCK_RETURN_VALUE);
+   expect(response.response).toEqual(MOCK_RETURN_VALUE);
 
 });
 
@@ -56,7 +56,7 @@ test('requests.put calls axios.put correctly', async () => {
       headers: TEST_HEADERS
    });
 
-   expect(response).toEqual(MOCK_RETURN_VALUE);
+   expect(response.response).toEqual(MOCK_RETURN_VALUE);
 
 });
 
@@ -73,5 +73,5 @@ test('requests.destroy calls axios.delete correctly', async () => {
       headers: TEST_HEADERS
    });
 
-   expect(response).toEqual(MOCK_RETURN_VALUE);
+   expect(response.response).toEqual(MOCK_RETURN_VALUE);
 });
